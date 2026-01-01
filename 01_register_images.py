@@ -42,7 +42,7 @@ OUT_DIR = Path(
 MASKED_DIR = OUT_DIR / "masked_input"
 DEBUG_DIR = OUT_DIR / "tiepoints_debug"
 
-# 参考影像（时间和名称需要和你论文中保持一致）
+# 参考影像
 REF_NAME = "20240810_102132_44_2416_3B_AnalyticMS_SR_8b_clip.tif"
 REF_PATH = IMG_DIR / REF_NAME
 
@@ -110,7 +110,7 @@ def main():
                 im_ref=str(REF_PATH),
                 im_tgt=str(masked_sen_path),
                 grid_res=GRID_RES,
-                r_b4match=6,  # Red band index（你的数据中红色为第 6 波段）
+                r_b4match=6,  # Red band index（数据中红色为第 6 波段）
                 s_b4match=6,  # Red band index
                 path_out=str(out_reg_path),
                 fmt_out="GTIFF",
