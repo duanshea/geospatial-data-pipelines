@@ -12,15 +12,22 @@ PlanetScope 影像配准脚本（AROSICS COREG_LOCAL）
    - 所有有效 Tie-points 表 all_coreg_tiepoints.csv
    - 每景的 Tie-points 可视化图 和 Shift 分布图（用于质检）
 """
-
+import os
 from pathlib import Path
 import shutil
-
 import numpy as np
 import pandas as pd
-import rasterio
-from arosics import COREG_LOCAL
+
+from arosics import COREG_LOCAL   # ⚠️ 先让它“作妖”
 import matplotlib.pyplot as plt
+
+# === 在 AROSICS 之后，兜底修复 PATH ===
+bin_dir = Path(os.environ["CONDA_PREFIX"]) / "Library" / "bin"
+if str(bin_dir) not in os.environ["PATH"]:
+    os.environ["PATH"] = str(bin_dir) + ";" + os.environ["PATH"]
+
+import rasterio  
+
 
 
 # ======== 0. 参数设置（可根据需要修改，对应论文 Table 4.4） ========
